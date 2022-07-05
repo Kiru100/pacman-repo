@@ -38,8 +38,8 @@ function displayMap(){
 }
 
 function displayPacMan(){
-    pacmanDiv.style.left = pacman.x*20+"px";
-    pacmanDiv.style.top = pacman.y*20+"px";
+    pacmanDiv.style.left = pacman.x*40+"px";
+    pacmanDiv.style.top = pacman.y*40+"px";
     pacmanDiv.style.transform =`rotate(${pacman.degree}deg)`;
 
 }
