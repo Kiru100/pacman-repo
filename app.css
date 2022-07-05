@@ -13,7 +13,7 @@ div.row div{
     display: inline-block;
 }
 div.brick{
-    background:url(asset/brick.png);
+    background:url(asset/brick3.jpg);
     background-repeat: no-repeat;
     background-repeat: center;
     background-size: cover;
@@ -21,13 +21,20 @@ div.brick{
 }
 div.coin{
     /* background: url('asset/coin.gif') center center / 10px no-repeat;  */
-    background:url(asset/coin.gif);
+    background:url(asset/coin3D.gif);
     background-repeat: no-repeat;
     background-position:center;
     background-size: cover;
 }
+div.ghost{
+   
+    background:url(asset/ghost3D.gif);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
 div.cherry{
-    background:url(asset/cherry.png);
+    background:url(asset/cherry4.png);
     background-repeat: no-repeat;
     background-position:center;
     background-size: cover;
