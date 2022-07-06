@@ -1,9 +1,19 @@
 *{
-    margin:0 ;
+    margin:0;
+    padding:0;
+    
 }
 body{
-    background-color: #3A3835
+    background-color: #3A3835;
+    
 }
+#container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 div.row{
     height: 40px;
 }
