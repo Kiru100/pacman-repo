@@ -1,14 +1,14 @@
 
 let world = [
     [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
-    [2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2],
+    [2,3,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,3,2],
     [2,1,2,2,2,2,1,2,1,2,2,1,2,1,2,2,2,2,1,2],
     [2,1,2,1,1,1,1,2,1,1,1,1,2,1,1,1,1,2,1,2],
     [2,1,2,1,2,2,2,2,1,2,2,1,2,2,2,2,1,2,1,2],
     [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
     [2,2,2,1,2,1,2,2,2,1,1,2,2,2,1,2,1,2,2,2],
-    [2,1,1,1,2,1,2,2,1,1,1,1,2,2,1,2,1,1,1,2],
-    [2,2,2,1,2,1,2,2,1,1,1,1,2,2,1,2,1,2,2,2],
+    [2,3,1,1,2,1,2,2,0,0,0,0,2,2,1,2,1,1,1,2],
+    [2,2,2,1,2,1,2,2,0,0,0,0,2,2,1,2,1,2,2,2],
     [2,2,2,1,2,1,2,2,2,2,2,2,2,2,1,2,1,2,2,2],
     [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
     [2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2],
@@ -20,53 +20,18 @@ let world = [
     [2,1,2,2,2,2,1,2,1,2,2,1,2,1,2,2,2,2,1,2],
     [2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2],
     [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
- 
    
 ];
 let pacman = {
-    x:1,
-    y:1,
+    x:9,
+    y:18,
     degree:0
 };
 let pacmanDiv = document.getElementById('pacman');
+let scoreDiv = document.getElementById('score');
+let ghostDiv = document.getElementById('inky');
+
 let score=0; 
-
-function displayMap(){
-    let output = '';
-    for(let i=0; i<world.length;i++){
-        output += "\n<div class='row'>\n"
-        for(let j=0; j<world[i].length; j++){
-            if(world[i][j]==2){
-                output +="<div class='brick'></div>";
-            }else if(world[i][j]==1){
-                output +="<div class='coin'></div>";
-            }else if(world[i][j]==0){
-                output +="<div class='empty'></div>"
-            }else if(world[i][j]==3){
-                output +="<div class='cherry'></div>"
-            }else if(world[i][j]==4){
-                output +="<div class='ghost'></div>"
-            }          
-        }
-        output+="\n</div>"
-    }
-    document.getElementById('world').innerHTML = output;
-}
-
-function displayPacMan(){
-    pacmanDiv.style.left = pacman.x*40+"px";
-    pacmanDiv.style.top = pacman.y*40+"px";
-    pacmanDiv.style.transform =`rotate(${pacman.degree}deg)`;
-
-}
-function displayScore(){
-    document.getElementById('score').innerHTML = score;
-   
-}
-
-displayMap();
-displayPacMan();
-displayScore();
 
 document.onkeydown = function(e){
     if(e.key==='ArrowLeft' && world[pacman.y][pacman.x-1]!=2){
@@ -88,12 +53,51 @@ document.onkeydown = function(e){
         world[pacman.y][pacman.x] = 0 ;
         score +=10;
         displayMap();
-        displayScore();
+        displayScore();  
     }else if(world[pacman.y][pacman.x] === 3){
         world[pacman.y][pacman.x] = 0;
         score +=20;
         displayMap();
-        displayScore();
+        displayScore();   
     } 
     displayPacMan();   
+
 }
+
+function displayMap(){
+    let output = '';
+    for(let i=0; i<world.length;i++){
+        output += "\n<div class='row'>\n"
+        for(let j=0; j<world[i].length; j++){
+            if(world[i][j]==2){
+                output +=`<div class='brick'></div>`;
+            }else if(world[i][j]==1){
+                output +="<div class='coin'></div>";
+            }else if(world[i][j]==0){
+                output +="<div class='empty'></div>"
+            }else if(world[i][j]==3){
+                output +="<div class='cherry'></div>"
+            }
+        }
+        output+="\n</div>"
+    }
+    document.getElementById('world').innerHTML = output;
+}
+
+function displayPacMan(){
+    pacmanDiv.style.left = pacman.x*40+"px";
+    pacmanDiv.style.top = pacman.y*40+"px";
+    pacmanDiv.style.transform =`rotate(${pacman.degree}deg)`;
+}
+function displayScore(){
+    scoreDiv.innerHTML = score;
+}
+
+
+function moveGhost(){
+    pacmanDiv.style.top = pacman.y*40+"px";
+}
+
+displayMap();
+displayPacMan();
+displayScore();

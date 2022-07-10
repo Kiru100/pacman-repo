@@ -5,7 +5,11 @@
     
 }
 body{
-    background-color: #3A3835;
+    background-color: #48cae4;
+    font-family: 'Press Start 2P', cursive;
+    color:#fff;
+    background-image: url('asset/luemen-rutkowski-Buzk4BGDKGg-unsplash.jpg');
+    background-size: cover;
     
 }
 #container{
@@ -15,6 +19,9 @@ body{
     transform: translate(-50%, -50%);
     min-width:1000px;
     min-width:1000px;
+    background-color: rgba(59, 56, 55);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 0 100px 100px 0;
 }
 
 div.row{
@@ -31,20 +38,13 @@ div.brick{
     background-repeat: center;
     background-size: cover;
     display: inline-block;
+    color:white;
 }
 div.coin{
-    /* background: url('asset/coin.gif') center center / 10px no-repeat;  */
     background:url(asset/coin3D.gif);
     background-repeat: no-repeat;
     background-position:center;
     background-size: cover;
-}
-div.ghost{
-   
-    background:url(asset/ghost3D.gif);
-    background-repeat: no-repeat;
-    background-position:center;
-    background-size: contain;
 }
 div.cherry{
     background:url(asset/cherry4.png);
@@ -53,6 +53,32 @@ div.cherry{
     background-size: cover;
 }
 
+div.ghost{
+    background:url(asset/ghost3D.gif);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+}
+#blinky{
+    top:320px;
+    left:360px;
+}
+#clyde{
+    top:280px;
+    left:320px;
+}
+#pinky{
+    top:280px;
+    left:400px;
+}
+
+#inky{
+    top:320px;
+    left:440px;
+}
 #pacman{
     background: url('asset/pacman1.gif');
     background-repeat: no-repeat;
@@ -64,12 +90,31 @@ div.cherry{
 }
 #score{
     border:1px solid white;
-    width: 40px;
-    height: 20px;
+    width:100px;
+    padding: 30px;
     color:white;
+    
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     position: absolute;
     top:0px;
     right:5px;
+}
+
+h1{
+    position:absolute;
+}
+
+
+ p.loop_message{
+    position: absolute;
+    top: 340px;
+    left:70px;   
+    display: none; 
+    padding: 40px;
+    font-size: 60px;
+    color:#03045e;
+    border-radius: 100px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background-color: #0077b6;
 }
