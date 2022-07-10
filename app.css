@@ -12,10 +12,7 @@ body{
     background-size: cover;
     
 }
-body div{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 10px;
-}
+
 #container{
     position: absolute;
     top: 50%;
@@ -62,10 +59,10 @@ div.ghost{
     background-repeat: no-repeat;
     background-position:center;
     background-size: contain;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     position: absolute;
-    transition: ease 1s top, ease 1s left;
+    transition: ease 0.5s top, ease 0.5s left;
 }
 #pacman{
     background: url('asset/pacman1.gif');
@@ -104,5 +101,5 @@ h1{
     border-radius: 100px;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     background-color: #0077b6;
-    transition: ease-in 1s;
+   
 }

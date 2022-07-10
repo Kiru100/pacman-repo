@@ -190,30 +190,32 @@ function moveGhost(name){
 
     //chase
     if(pacmanx===ghost_name.x){
-            if(pacmany > ghosty){
+            if(pacmany > ghosty && world[ghosty+1][ghostx]!=2){
                 ghost_name.y++;
-            }else{
+            }else if(pacmany < ghosty && world[ghosty-1][ghostx]!=2){
                 ghost_name.y--;
             }
 
     }else if(pacmany===ghost_name.y){
-            if(pacmanx > ghostx){
+            if(pacmanx > ghostx && world[ghosty][ghostx+1]!=2){
                 ghost_name.x++;
-            }else{
+            }else if(pacmanx < ghostx && world[ghosty][ghostx-1]!=2){
                 ghost_name.x--;
-            }
-    }else{
-        //search
-            if(random_num==0 && world[ghosty][ghostx-1]!=2){
-                ghost_name.x--;
-            }else if(random_num==1 && world[ghosty][ghostx+1]!=2 ){
-                ghost_name.x++;
-            }else if(random_num==2 && world[ghosty-1][ghostx]!=2){
-                ghost_name.y--;
-            }else if(random_num==3 && world[ghosty+1][ghostx]!=2){
-                ghost_name.y++;
             }
     }
+        if(random_num==0 && world[ghosty][ghostx-1]!=2){
+            ghost_name.x--;
+        //right
+        }else if(random_num==1 && world[ghosty][ghostx+1]!=2 ){
+            ghost_name.x++;
+        //up
+        }else if(random_num==2 && world[ghosty-1][ghostx]!=2){
+            ghost_name.y--;
+        //down
+        }else if(random_num==3 && world[ghosty+1][ghostx]!=2){
+            ghost_name.y++;
+        }
+    
 
     
     if(pacman.x ===ghost_name.x && pacman.y == ghost_name.y ){
@@ -263,7 +265,7 @@ setInterval(function(){
     // }while(gameover!=true);
     
     // message.style.display='none';
-},1000);
+},100);
 
 // displayMessage();
 function displayMessage(){
