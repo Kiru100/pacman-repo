@@ -20,6 +20,29 @@ let world = [
     [2,1,2,2,2,2,1,2,1,2,2,1,2,1,2,2,2,2,1,2],
     [2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2],
     [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
+        // [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+        // [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
+        
    
 ];
 let pacman = {
@@ -104,6 +127,7 @@ function displayMap(){
         output += "\n<div class='row'>\n"
         for(let j=0; j<world[i].length; j++){
             if(world[i][j]==2){
+                // output +=`<div class='brick'>${i}|${j}</div>`;
                 output +=`<div class='brick'></div>`;
             }else if(world[i][j]==1){
                 output +="<div class='coin'></div>";
@@ -151,24 +175,47 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
 
-
 function moveGhost(name){
     let random_num = getRandomInt(4);
     let ghost_name = getName(name);
+    let pacmanx = pacman.x;
+    let pacmany = pacman.y;
+    let ghostx = ghost_name.x;
+    let ghosty = ghost_name.y;
 
-    // console.log(name+' x:'+ghost_name.x+' y:'+ghost_name.y)
-    if(random_num==0 && world[ghost_name.y][ghost_name.x-1]!=2){
-        ghost_name.x--;
-    }else if(random_num==1 && world[ghost_name.y][ghost_name.x+1]!=2 ){
-        ghost_name.x++;
-    }else if(random_num==2 && world[ghost_name.y-1][ghost_name.x]!=2){
-        ghost_name.y--;
-    }else if(random_num==3 && world[ghost_name.y+1][ghost_name.x]!=2){
-        ghost_name.y++;
+
+    // console.log(`pacmanx: ${pacmanx} | pacmany: ${pacmany}`);
+    // console.log(`ghostx: ${ghost_name.x} | ghosty: ${ghost_name.y}`);
+    console.log(`ghostx: ${ghost_name.x} | pacmanx: ${pacmanx}`);
+
+    //chase
+    if(pacmanx===ghost_name.x){
+            if(pacmany > ghosty){
+                ghost_name.y++;
+            }else{
+                ghost_name.y--;
+            }
+
+    }else if(pacmany===ghost_name.y){
+            if(pacmanx > ghostx){
+                ghost_name.x++;
+            }else{
+                ghost_name.x--;
+            }
+    }else{
+        //search
+            if(random_num==0 && world[ghosty][ghostx-1]!=2){
+                ghost_name.x--;
+            }else if(random_num==1 && world[ghosty][ghostx+1]!=2 ){
+                ghost_name.x++;
+            }else if(random_num==2 && world[ghosty-1][ghostx]!=2){
+                ghost_name.y--;
+            }else if(random_num==3 && world[ghosty+1][ghostx]!=2){
+                ghost_name.y++;
+            }
     }
 
-    // console.log('name :'+name+' || '+world[ghost_name.y][ghost_name.x] )
-
+    
     if(pacman.x ===ghost_name.x && pacman.y == ghost_name.y ){
         displayMessage();
         gameover = true;
@@ -216,7 +263,7 @@ setInterval(function(){
     // }while(gameover!=true);
     
     // message.style.display='none';
-},200);
+},1000);
 
 // displayMessage();
 function displayMessage(){
