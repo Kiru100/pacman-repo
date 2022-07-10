@@ -60,19 +60,21 @@ let gameover = false;
 let score=0; 
 
 document.onkeydown = function(e){
-    if(e.key==='ArrowLeft' && world[pacman.y][pacman.x-1]!=2){
-        pacman.x--;
-        pacman.degree=180;
-    }else if (e.key==='ArrowRight' && world[pacman.y][pacman.x+1]!=2 ){
-        pacman.x++;
-        pacman.degree=360;
-        
-    }else if(e.key ==='ArrowUp' && world[pacman.y-1][pacman.x]!=2){
-        pacman.y--;
-        pacman.degree=270;
-    }else if(e.key === 'ArrowDown' && world[pacman.y+1][pacman.x]!=2){
-        pacman.y++;
-        pacman.degree=90;
+    if(gameover!=true){
+        if(e.key==='ArrowLeft' && world[pacman.y][pacman.x-1]!=2){
+            pacman.x--;
+            pacman.degree=180;
+        }else if (e.key==='ArrowRight' && world[pacman.y][pacman.x+1]!=2 ){
+            pacman.x++;
+            pacman.degree=360;
+            
+        }else if(e.key ==='ArrowUp' && world[pacman.y-1][pacman.x]!=2){
+            pacman.y--;
+            pacman.degree=270;
+        }else if(e.key === 'ArrowDown' && world[pacman.y+1][pacman.x]!=2){
+            pacman.y++;
+            pacman.degree=90;
+        }
     }
 
     if(world[pacman.y][pacman.x] === 1 ){
@@ -91,6 +93,8 @@ document.onkeydown = function(e){
         displayMap();
         displayScore();   
     } 
+
+    
     displayPacMan();   
 }
 
@@ -188,6 +192,8 @@ function getName(name){
     }
     return ghost_name;
 }
+
+
 
 displayMap();
 displayPacMan();
