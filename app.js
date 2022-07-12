@@ -211,7 +211,7 @@ function moveGhost(name){
     }
 
     // collision pacman x ghost
-    if(pacman.x ===ghost_name.x && pacman.y == ghost_name.y ){
+    if(pacman.x === ghost_name.x && pacman.y === ghost_name.y ){
         displayMessage();
         gameover = true;
     }
@@ -237,21 +237,24 @@ displayMap();
 displayPacMan();
 displayScore();
 
-if(gameover!=true){
-    setInterval(function(){
-            moveGhost('inky');
-            moveGhost('clyde');
-            moveGhost('blinky');
-            moveGhost('pinky');
-            displayGhost('inky');
-            displayGhost('clyde');
-            displayGhost('blinky');
-            displayGhost('pinky'); 
-    
-    },100);
-}
+
+
+setInterval(function(){
+
+    if(gameover!=true){
+        moveGhost('inky');
+        moveGhost('clyde');
+        moveGhost('blinky');
+        moveGhost('pinky');
+        displayGhost('inky');
+        displayGhost('clyde');
+        displayGhost('blinky');
+        displayGhost('pinky'); 
+    }
+},100);
+
 
 function displayMessage(){
     message.style.display='block';
-    // gameover = true;
+
 }
