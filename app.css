@@ -5,7 +5,7 @@
     
 }
 body{
-    /* background-color: #48cae4; */
+    background-color: #C2BDB9;
     font-family: 'Press Start 2P', cursive;
     color:#fff;
     background-image: url('asset/luemen-rutkowski-Buzk4BGDKGg-unsplash.jpg');
@@ -72,7 +72,7 @@ div.ghost{
     width: 40px;
     height: 40px; 
     position: absolute;
-    transition: ease 0.05s top, ease 0.05s  left;
+    transition: ease .05s top, ease .05s left;
 }
 #score{
     width:100px;
