@@ -1,5 +1,5 @@
-let world_selection = {
-    world0:[
+let world_selection = [
+    [
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
         [2,3,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,3,2],
         [2,1,2,2,2,2,1,2,1,2,2,1,2,1,2,2,2,2,1,2],
@@ -21,7 +21,7 @@ let world_selection = {
         [2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2],
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
     ],
-    world1:[
+    [
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
         [2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2],
         [2,1,2,2,2,2,2,2,1,1,1,1,2,2,2,2,2,2,1,2],
@@ -43,7 +43,7 @@ let world_selection = {
         [2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2],
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
     ],
-    world2:[
+    [
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
         [2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2],
         [2,1,2,2,2,2,2,2,1,1,1,1,2,2,2,2,2,2,1,2],
@@ -65,7 +65,7 @@ let world_selection = {
         [2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2],
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
     ],
-    world3:[  
+    [  
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
         [2,3,1,1,2,1,1,1,2,1,1,1,2,1,1,1,2,1,1,2],
         [2,2,2,1,1,1,2,1,1,1,2,1,1,1,2,1,1,1,1,2],
@@ -87,7 +87,7 @@ let world_selection = {
         [2,1,2,1,1,1,2,1,3,1,2,3,1,1,2,1,1,1,3,2],
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
     ],
-    world4:[
+    [
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
         [2,2,1,1,1,2,1,2,1,2,1,2,1,1,1,2,1,2,3,2],
         [2,3,1,2,1,2,1,2,1,2,1,1,1,2,1,2,1,2,1,2],
@@ -109,7 +109,7 @@ let world_selection = {
         [2,3,1,2,1,2,1,2,1,1,1,2,1,2,1,2,1,2,3,2],
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
     ],
-    world5:[
+    [
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
         [2,3,1,1,1,1,1,2,2,2,2,2,1,1,1,1,1,1,3,2],
         [2,1,2,2,2,2,1,1,1,1,1,1,1,2,2,2,2,2,1,2],
@@ -131,28 +131,11 @@ let world_selection = {
         [2,3,2,2,2,3,2,2,2,2,2,2,2,2,3,2,2,2,3,2],
         [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
     ]
-};
-let world = [];
-let random_world=Math.floor(Math.random()*5)
+];
 
-    if(random_world==0){
-        world = world_selection.world0;
-    }
-    if(random_world==1){
-        world = world_selection.world1;
-    }
-    if(random_world==2){
-        world = world_selection.world2;
-    }
-    if(random_world==3){
-        world = world_selection.world3;
-    }
-    if(random_world==4){
-        world = world_selection.world4;
-    }
-    if(random_world==5){
-        world = world_selection.world5;
-    }
+// let random_world=Math.floor(Math.random()*5)
+let world= world_selection[getRandomInt(5)];
+
 
 let pacman = {
     x:9,
@@ -233,7 +216,6 @@ function displayMap(){
         output += "\n<div class='row'>\n"
         for(let j=0; j<world[i].length; j++){
             if(world[i][j]==2){
-                // output +=`<div class='brick'>${i}|${j}</div>`;
                 output +=`<div class='brick'></div>`;
             }else if(world[i][j]==1){
                 output +="<div class='coin'></div>";
@@ -248,8 +230,11 @@ function displayMap(){
     document.getElementById('world').innerHTML = output;
 }
 
-function displayGhost(name){
+function displayGhost(name,name2){
     let ghost_name = getName(name);
+    
+    console.log(ghost_name)
+
     if(name==='inky'){
         inky.style.left = ghost_name.x*40+"px";
         inky.style.top = ghost_name.y*40+"px"; 
@@ -280,13 +265,12 @@ function getRandomInt(max) {
 
 function moveGhost(name){
     let random_num = getRandomInt(4);
-    let ghost_name = getName(name);
+    let ghost_name = name;
     let pacmanx = pacman.x;
     let pacmany = pacman.y;
     let ghostx = ghost_name.x;
     let ghosty = ghost_name.y;
 
-    // console.log(`ghostx: ${ghost_name.x} | pacmanx: ${pacmanx}`);
     //chase mode
     if(pacmanx===ghost_name.x){
             if(pacmany > ghosty && world[ghosty+1][ghostx]!=2){
@@ -324,7 +308,8 @@ function moveGhost(name){
 }
 
 function getName(name){
-    let ghost_name = '';
+    let ghost_name = name;
+
     if(name === 'inky'){
         ghost_name = ghost.inky;
     }else if(name === 'blinky'){
@@ -343,10 +328,10 @@ displayScore();
 
 setInterval(function(){
     if(gameover!=true){
-        moveGhost('inky');
-        moveGhost('clyde');
-        moveGhost('blinky');
-        moveGhost('pinky');
+        moveGhost(ghost.inky);
+        moveGhost(ghost.clyde);
+        moveGhost(ghost.blinky);
+        moveGhost(ghost.pinky);
         displayGhost('inky');
         displayGhost('clyde');
         displayGhost('blinky');
