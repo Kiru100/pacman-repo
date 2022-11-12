@@ -2,15 +2,13 @@
 *{
     margin:0;
     padding:0;
-    
 }
 body{
     background-color: #C2BDB9;
     font-family: 'Press Start 2P', cursive;
     color:#fff;
     background-image: url('asset/luemen-rutkowski-Buzk4BGDKGg-unsplash.jpg');
-    background-size: cover;
-    
+    background-size: cover;   
 }
 
 #container{
@@ -84,11 +82,6 @@ div.ghost{
     top:-50px;
     right:35px;
 }
-
-/* <div id="message">
-            <p>Game Over</p>
-            <span>Click to play again</span>
-        </div>  */
 h1{
     position:absolute;
     top: -45px;
