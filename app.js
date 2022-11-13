@@ -236,23 +236,23 @@ function displayGhost(name,name2){
     console.log(ghost_name)
 
     if(name==='inky'){
-        inky.style.left = ghost_name.x*40+"px";
-        inky.style.top = ghost_name.y*40+"px"; 
+        inky.style.left = ghost_name.x*30+"px";
+        inky.style.top = ghost_name.y*30+"px"; 
     }else if(name === 'blinky'){
-        blinky.style.left = ghost_name.x*40+"px";
-        blinky.style.top = ghost_name.y*40+"px"; 
+        blinky.style.left = ghost_name.x*30+"px";
+        blinky.style.top = ghost_name.y*30+"px"; 
     }else if(name === 'pinky'){
-        pinky.style.left = ghost_name.x*40+"px";
-        pinky.style.top = ghost_name.y*40+"px"; 
+        pinky.style.left = ghost_name.x*30+"px";
+        pinky.style.top = ghost_name.y*30+"px"; 
     }else if(name === 'clyde'){
-        clyde.style.left = ghost_name.x*40+"px";
-        clyde.style.top = ghost_name.y*40+"px"; 
+        clyde.style.left = ghost_name.x*30+"px";
+        clyde.style.top = ghost_name.y*30+"px"; 
     }
 }
 
 function displayPacMan(){
-    pacmanDiv.style.left = pacman.x*40+"px";
-    pacmanDiv.style.top = pacman.y*40+"px";
+    pacmanDiv.style.left = pacman.x*30+"px";
+    pacmanDiv.style.top = pacman.y*30+"px";
     pacmanDiv.style.transform =`rotate(${pacman.degree}deg)`;
 }
 function displayScore(){
