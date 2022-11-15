@@ -220,9 +220,9 @@ function displayMap(){
             }else if(world[i][j]==1){
                 output +="<div class='coin'></div>";
             }else if(world[i][j]==0){
-                output +="<div class='empty'></div>"
+                output +="<div class='empty'></div>";
             }else if(world[i][j]==3){
-                output +="<div class='cherry'></div>"
+                output +="<div class='cherry'></div>";
             }
         }
         output+="\n</div>"
